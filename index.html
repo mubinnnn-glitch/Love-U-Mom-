@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Dearest Mom 👑💖</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #ff85a1 0%, #ff0a54 60%, #4a001f 100%);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+      padding: 20px 0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 182, 193, 0.45);
+      filter: blur(140px);
+      border-radius: 50%;
+      z-index: 0;
+      animation: pulseGlow 6s infinite alternate ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.6; }
+      100% { transform: scale(1.3) translate(20px, -20px); opacity: 0.9; }
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .screen {
+      display: none;
+      width: 90%;
+      max-width: 480px;
+      text-align: center;
+      z-index: 10;
+      animation: luxuryFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    @keyframes luxuryFade {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .card-box {
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-top: 2px solid rgba(255, 255, 255, 0.8);
+      padding: 30px 20px;
+      border-radius: 28px;
+      box-shadow: 0 25px 50px rgba(139, 0, 50, 0.35), inset 0 0 20px rgba(255, 255, 255, 0.2);
+      position: relative;
+    }
+
+    h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, #ffffff, #ffe6ea, #ffd700, #ffffff);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      animation: goldShimmer 4s linear infinite;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+
+    @keyframes goldShimmer {
+      to { background-position: 200% center; }
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #ff0a54, #ff477e);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 13px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(255, 10, 84, 0.4);
+      margin: 15px 5px 5px 5px;
+      transition: all 0.3s ease;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 15px 35px rgba(255, 10, 84, 0.7);
+      background: linear-gradient(135deg, #ff477e, #ff0a54);
+    }
+
+    input[type="text"] {
+      width: 85%;
+      padding: 14px;
+      margin: 15px 0 10px 0;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 14px;
+      outline: none;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.25);
+      color: #fff;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    input[type="text"]::placeholder {
+      color: #ffe6ea;
+    }
+
+    .hint-text {
+      color: #ffd700;
+      font-size: 0.85rem;
+      margin-top: 8px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      display: none;
+      animation: pulseGlow 1.5s infinite alternate;
+    }
+
+    .music-control {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(15px);
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* --- CAKE & BAKING STYLES --- */
+    .baking-stage {
+      position: relative;
+      width: 260px;
+      height: 200px;
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .css-bowl {
+      width: 120px;
+      height: 60px;
+      background: linear-gradient(135deg, #ffffff, #ffe6ea);
+      border-radius: 0 0 60px 60px;
+      border: 2px solid #ff758f;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      position: relative;
+      animation: mixBowl 1.2s infinite ease-in-out alternate;
+    }
+
+    .css-bowl::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 10px;
+      width: 100px;
+      height: 20px;
+      background: #ffb3c1;
+      border-radius: 50%;
+    }
+
+    @keyframes mixBowl {
+      0% { transform: rotate(-10deg); }
+      100% { transform: rotate(10deg); }
+    }
+
+    .css-oven {
+      width: 180px;
+      height: 140px;
+      background: #590d22;
+      border: 3px solid #ffb3c1;
+      border-radius: 16px;
+      position: relative;
+      box-shadow: 0 0 30px rgba(255, 71, 126, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 15px;
+    }
+
+    .oven-glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255, 182, 193, 0.6) 0%, transparent 70%);
+      animation: pulseOven 0.8s infinite alternate;
+    }
+
+    @keyframes pulseOven {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.9; }
+    }
+
+    .luxury-cake-container {
+      position: relative;
+      width: 200px;
+      height: 170px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .cake-plate {
+      width: 220px;
+      height: 12px;
+      background: linear-gradient(90deg, #ffffff, #ffb3c1, #ffffff);
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .cake-layer {
+      position: relative;
+      border-radius: 10px 10px 0 0;
+      box-shadow: inset 0 5px 10px rgba(255,255,255,0.6), 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.8s ease, opacity 0.8s ease;
+    }
+
+    .layer-bottom {
+      width: 160px;
+      height: 55px;
+      background: linear-gradient(135deg, #ff477e, #ff0a54);
+      border: 1px solid #ffffff;
+    }
+
+    .layer-top {
+      width: 110px;
+      height: 45px;
+      background: linear-gradient(135deg, #ffb3c1, #ff758f);
+      border: 1px solid #ffffff;
+    }
+
+    .cream-drip {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 12px;
+      background: #ffffff;
+      border-radius: 10px 10px 5px 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .gold-bead {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #ffffff;
+      border-radius: 50%;
+      bottom: 5px;
+      box-shadow: 0 0 5px #ffffff;
+    }
+
+    .candle {
+      position: absolute;
+      top: -30px;
+      width: 10px;
+      height: 30px;
+      background: linear-gradient(to right, #ffffff, #ffe6ea);
+      border-radius: 3px;
+      z-index: 5;
+      cursor: pointer;
+    }
+
+    .candle-flame {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 20px;
+      background: radial-gradient(circle, #ffffff 10%, #ffd700 50%, #ff4500 100%);
+      border-radius: 50% 50% 20% 20%;
+      box-shadow: 0 0 15px #ffd700, 0 0 25px #ff4500;
+      animation: flicker 0.1s infinite alternate;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1) rotate(-2deg); }
+      100% { transform: translateX(-50%) scale(1.1) rotate(2deg); }
+    }
+
+    .candle-flame.extinguished {
+      opacity: 0 !important;
+      transform: translateX(-50%) scale(0) !important;
+    }
+
+    .royal-knife {
+      position: absolute;
+      top: -60px;
+      right: -40px;
+      width: 8px;
+      height: 90px;
+      background: linear-gradient(to bottom, #ffffff, #ffb3c1, #ffffff);
+      border-radius: 2px;
+      transform: rotate(45deg);
+      opacity: 0;
+      transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+      z-index: 10;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    }
+
+    .royal-knife.cut-action {
+      opacity: 1;
+      top: 10px;
+      right: 95px;
+      transform: rotate(0deg);
+    }
+
+    .luxury-cake-container.cut .layer-top,
+    .luxury-cake-container.cut .layer-bottom {
+      clip-path: polygon(0 0, 48% 0, 48% 100%, 0 100%);
+    }
+
+    .progress-bar-container {
+      width: 80%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      margin: 15px auto;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #ffffff, #ff477e);
+      transition: width 0.3s ease;
+    }
+
+    /* --- HIDDEN WISHES GRID STYLES --- */
+    .wish-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .wish-card {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 18px;
+      padding: 18px 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wish-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      background: rgba(255, 255, 255, 0.35);
+      border-color: #ffffff;
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .wish-card span {
+      font-size: 1.8rem;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .wish-card h4 {
+      font-size: 0.85rem;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(59, 0, 25, 0.75);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-card {
+      background: linear-gradient(135deg, #ff477e, #ff0a54);
+      border: 2px solid #ffffff;
+      border-radius: 24px;
+      padding: 25px;
+      width: 85%;
+      max-width: 380px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255, 182, 193, 0.6);
+      animation: popupScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popupScale {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .popup-card p {
+      color: #ffffff;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 15px 0;
+    }
+
+    /* --- COUPON CARDS --- */
+    .coupon-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 15px 0;
+    }
+
+    .coupon-card {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1.5px dashed #ffffff;
+      border-radius: 16px;
+      padding: 15px 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .coupon-card:hover {
+      transform: translateY(-3px) scale(1.03);
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .coupon-card h3 {
+      font-size: 0.85rem;
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
+
+    .coupon-card p {
+      font-size: 0.7rem;
+      color: #ffe6ea;
+    }
+
+    .royal-letter {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: #ffffff;
+      line-height: 1.6;
+      text-align: center;
+      margin: 15px 0;
+      text-shadow: 0 0 10px rgba(255,255,255,0.4);
+    }
+
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 0 10px #ffffff, 0 0 15px #ffb3c1;
+      animation: fadeSparkle 0.8s linear forwards;
+      z-index: 999;
+    }
+
+    @keyframes fadeSparkle {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0) translateY(15px); }
+    }
+  </style>
+</head>
+<body onclick="autoPlayAudio()">
+
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a77f98.mp3?filename=happy-birthday-155461.mp3" type="audio/mpeg">
+  </audio>
+
+  <button class="music-control" onclick="toggleMusic(event)">🎵 MUSIC: ON</button>
+  <canvas id="fireworksCanvas"></canvas>
+
+  <!-- POPUP FOR HIDDEN WISHES -->
+  <div id="wishPopup" class="popup-overlay">
+    <div class="popup-card">
+      <span id="popupIcon" style="font-size: 2.5rem;">💌</span>
+      <h3 id="popupTitle" style="color: #ffffff; font-family: 'Cinzel', serif; margin-top: 5px;">HIDDEN WISH</h3>
+      <p id="popupText"></p>
+      <button class="btn" onclick="closePopup()">CLOSE ✨</button>
+    </div>
+  </div>
+
+  <!-- STEP 1: Passcode -->
+  <div id="screen1" class="screen active">
+    <div class="card-box">
+      <h2>MOM'S ROYAL PORTAL 👑</h2>
+      <p style="color: #ffe6ea; font-size: 0.85rem; letter-spacing: 1px;">Enter the secret password to open your surprise</p>
+      <input type="text" id="passcode" placeholder="Type: Queen">
+      <p id="errorMsg" style="color: #ffffff; font-weight: bold; font-size: 0.85rem; display: none; margin-top: 5px;"></p>
+      <br>
+      <button class="btn" onclick="unlockVault()">UNLOCK WORLD ✨</button>
+    </div>
+  </div>
+
+  <!-- STEP 2: Security Verification -->
+  <div id="screenQ1" class="screen">
+    <div class="card-box">
+      <h2>SECURITY VERIFICATION 💖</h2>
+      <p style="color: #ffffff; font-size: 0.9rem; margin-bottom: 10px; font-weight: 600;">Who has the most beautiful smile in the world? 🌸</p>
+      <input type="text" id="ansQ1" placeholder="Type answer here...">
+      <p id="hintQ1" class="hint-text">💡 Hint: Mom</p>
+      <br>
+      <button class="btn" onclick="checkQ1()">NEXT ➡️</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: Royal Cake Baking & Blow Candle -->
+  <div id="screenBake" class="screen">
+    <div class="card-box">
+      <h2>ROYAL BAKERY 🎂</h2>
+      <p id="bakeStatus" style="color: #ffffff; font-size: 0.85rem; font-weight: 600;">Preparing delicious ingredients...</p>
+
+      <div class="baking-stage" id="bakingStage">
+        <div class="css-bowl"></div>
+      </div>
+
+      <div class="progress-bar-container" id="progressBarBox">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div id="cakeActions" style="display: none; margin-top: 10px;">
+        <button id="blowBtn" class="btn" onclick="extinguishCandle()">BLOW CANDLE 🕯️</button>
+        <button id="cutBtn" class="btn" style="display: none;" onclick="cutCake()">CUT CAKE 🔪</button>
+        <button id="bakeNextBtn" class="btn" style="display: none;" onclick="nextScreen('screenHiddenWishes')">HIDDEN SURPRISES 💌</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4: Hidden Wishes (Updated & Expanded) -->
+  <div id="screenHiddenWishes" class="screen">
+    <div class="card-box">
+      <h2>SPECIAL WISHES FOR MOM 🎁</h2>
+      <p style="color: #ffe6ea; font-size: 0.8rem;">Mom, click each card to unlock a secret birthday note!</p>
+
+      <div class="wish-grid">
+        <div class="wish-card" onclick="openWish('💖 Pure Love', 'Mom, your warm smile brightens up my darkest days! May your heart always be filled with endless peace and happiness.', '💖')">
+          <span>🎁</span>
+          <h4>Love Note</h4>
+        </div>
+        <div class="wish-card" onclick="openWish('🌸 Endless Prayers', 'May Allah grant you continuous good health, long life, and endless joy today and always. Amen!', '🌸')">
+          <span>✉️</span>
+          <h4>Prayer Card</h4>
+        </div>
+        <div class="wish-card" onclick="openWish('👑 My Queen', 'You are my greatest inspiration and the true queen of our home. Thank you for being so amazing!', '👑')">
+          <span>👑</span>
+          <h4>Royal Note</h4>
+        </div>
+        <div class="wish-card" onclick="openWish('✨ Gratitude', 'I am forever grateful for all your unconditional love, warmth, and silent sacrifices. You mean everything to me!', '✨')">
+          <span>💎</span>
+          <h4>Gratitude</h4>
+        </div>
+        <div class="wish-card" onclick="openWish('🌷 Gentle Comfort', 'Your gentle touch and sweet words are my safest shelter in this world. Happy Birthday, Ammu!', '🌷')">
+          <span>🌺</span>
+          <h4>Warm Wish</h4>
+        </div>
+        <div class="wish-card" onclick="openWish('⭐ My Guiding Light', 'Thank you for always guiding my steps and believing in me even when no one else did!', '⭐')">
+          <span>🌟</span>
+          <h4>Inspiration</h4>
+        </div>
+      </div>
+
+      <button class="btn" onclick="nextScreen('screenCoupons')">NEXT SURPRISE 🎫</button>
+    </div>
+  </div>
+
+  <!-- STEP 5: Mom's Special Service Coupons -->
+  <div id="screenCoupons" class="screen">
+    <div class="card-box">
+      <h2>SPECIAL GIFT COUPONS 🎫</h2>
+      <p style="color: #ffe6ea; font-size: 0.8rem;">Exclusive VIP Service Coupons for you today, Mom!</p>
+
+      <div class="coupon-grid">
+        <div class="coupon-card" onclick="claimCoupon(this, 'Unlimited Special Tea/Coffee ☕')">
+          <h3>COUPON #1</h3>
+          <p>Unlimited Tea / Coffee ☕</p>
+        </div>
+        <div class="coupon-card" onclick="claimCoupon(this, 'Full Day Relaxation & No Cooking! 🍳')">
+          <h3>COUPON #2</h3>
+          <p>Full Day Rest Day 🛌</p>
+        </div>
+        <div class="coupon-card" onclick="claimCoupon(this, 'Favorite Shopping Spree 🛍️')">
+          <h3>COUPON #3</h3>
+          <p>Unlimited Shopping Spree 🛍️</p>
+        </div>
+        <div class="coupon-card" onclick="claimCoupon(this, 'Zero Arguments Guaranteed! 😇')">
+          <h3>COUPON #4</h3>
+          <p>Zero Arguments Today 😇</p>
+        </div>
+      </div>
+
+      <p id="couponClaimMsg" style="color: #ffffff; font-size: 0.85rem; font-weight: 600; min-height: 25px;"></p>
+
+      <button class="btn" onclick="nextScreen('screenFinale')">CONTINUE TO LETTER ✉️</button>
+    </div>
+  </div>
+
+  <!-- STEP 6: Grand Finale Heartfelt Letter -->
+  <div id="screenFinale" class="screen">
+    <div class="card-box" style="border-color: rgba(255, 255, 255, 0.8);">
+      <h2>HAPPY BIRTHDAY MOM 💖</h2>
+      
+      <div class="royal-letter">
+        Dearest Mom ✨
+      </div>
+
+      <p style="color: #ffffff; font-size: 0.9rem; line-height: 1.8; margin-bottom: 10px;">
+        Happy Birthday, Mom! Thank you for standing by my side at every step of life and loving me unconditionally. May Allah bless you with health, happiness, and peace always! 🌸👑
+      </p>
+
+      <button class="btn" onclick="location.reload()">REPLAY EXPERIENCE 🔄</button>
+    </div>
+  </div>
+
+  <script>
+    let audioStarted = false;
+
+    function autoPlayAudio() {
+      if (!audioStarted) {
+        document.getElementById('bgMusic').play().catch(() => {});
+        audioStarted = true;
+      }
+    }
+
+    function toggleMusic(e) {
+      e.stopPropagation();
+      const music = document.getElementById('bgMusic');
+      const btn = document.querySelector('.music-control');
+      if (music.paused) {
+        music.play();
+        btn.innerText = "🎵 MUSIC: ON";
+      } else {
+        music.pause();
+        btn.innerText = "🔇 MUSIC: OFF";
+      }
+    }
+
+    function nextScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(screenId).classList.add('active');
+    }
+
+    function unlockVault() {
+  const pass = document.getElementById('passcode').value.trim().toLowerCase();
+      if (pass === 'queen' || pass === 'mom') {
+        nextScreen('screenQ1');
+      } else {
+        const err = document.getElementById('errorMsg');
+        err.innerText = "Access Denied! Passcode is 'Queen'";
+        err.style.display = 'block';
+      }
+    }
+
+    function checkQ1() {
+      const ans = document.getElementById('ansQ1').value.trim().toLowerCase();
+      if (ans === 'mom' || ans === 'ammu' || ans === 'ma' || ans === 'mother') {
+        nextScreen('screenBake');
+        startBakingAnimation();
+      } else {
+        document.getElementById('hintQ1').style.display = 'block';
+      }
+    }
+
+    /* BAKING & CAKE ANIMATION */
+    function startBakingAnimation() {
+      const fill = document.getElementById('progressFill');
+      const status = document.getElementById('bakeStatus');
+      const stage = document.getElementById('bakingStage');
+
+      fill.style.width = '35%';
+
+      setTimeout(() => {
+        status.innerText = "🔥 Baking in pink royal oven...";
+        fill.style.width = '70%';
+        stage.innerHTML = `
+          <div class="css-oven">
+            <div class="oven-glow"></div>
+            <div style="width: 100px; height: 35px; background: #ff477e; border-radius: 8px 8px 0 0; border: 1px solid #ffffff;"></div>
+          </div>
+        `;
+      }, 2200);
+
+      setTimeout(() => {
+        status.innerText = "✨ Mom's Birthday Cake is Ready!";
+        fill.style.width = '100%';
+        document.getElementById('progressBarBox').style.display = 'none';
+        
+        stage.innerHTML = `
+          <div class="luxury-cake-container" id="luxuryCake">
+            <div class="royal-knife" id="royalKnife"></div>
+            <div class="candle" onclick="extinguishCandle()">
+              <div class="candle-flame" id="candleFlame"></div>
+            </div>
+            <div class="cake-layer layer-top">
+              <div class="cream-drip"></div>
+              <div class="gold-bead" style="left: 20px;"></div>
+              <div class="gold-bead" style="left: 55px;"></div>
+              <div class="gold-bead" style="right: 20px;"></div>
+            </div>
+            <div class="cake-layer layer-bottom">
+              <div class="cream-drip"></div>
+              <div class="gold-bead" style="left: 30px;"></div>
+              <div class="gold-bead" style="left: 80px;"></div>
+              <div class="gold-bead" style="right: 30px;"></div>
+            </div>
+            <div class="cake-plate"></div>
+          </div>
+        `;
+        document.getElementById('cakeActions').style.display = 'block';
+      }, 5000);
+    }
+
+    function extinguishCandle() {
+      const flame = document.getElementById('candleFlame');
+      const blowBtn = document.getElementById('blowBtn');
+      const cutBtn = document.getElementById('cutBtn');
+
+      if (flame && !flame.classList.contains('extinguished')) {
+        flame.classList.add('extinguished');
+        document.getElementById('bakeStatus').innerText = "🕯️ Candle Blown! Now cut the cake!";
+        
+        if(blowBtn) blowBtn.style.display = 'none';
+        if(cutBtn) cutBtn.style.display = 'inline-block';
+        
+        startFireworks();
+      }
+    }
+
+    function cutCake() {
+      const knife = document.getElementById('royalKnife');
+      const cake = document.getElementById('luxuryCake');
+      const cutBtn = document.getElementById('cutBtn');
+      const nextBtn = document.getElementById('bakeNextBtn');
+
+      knife.classList.add('cut-action');
+
+      setTimeout(() => {
+        cake.classList.add('cut');
+        document.getElementById('bakeStatus').innerText = "🎉 Delicious Cake Served for Mom!";
+        cutBtn.style.display = 'none';
+        nextBtn.style.display = 'inline-block';
+      }, 1000);
+    }
+
+    /* HIDDEN WISH POPUP FUNCTIONS */
+    function openWish(title, text, icon) {
+      document.getElementById('popupTitle').innerText = title;
+      document.getElementById('popupText').innerText = text;
+      document.getElementById('popupIcon').innerText = icon;
+      document.getElementById('wishPopup').style.display = 'flex';
+    }
+
+    function closePopup() {
+      document.getElementById('wishPopup').style.display = 'none';
+    }
+
+    function claimCoupon(card, reward) {
+      card.style.borderColor = '#ffffff';
+      card.style.background = 'rgba(255, 255, 255, 0.4)';
+      document.getElementById('couponClaimMsg').innerText = "✅ Claimed: " + reward;
+    }
+
+    /* SPARKLE TRAIL */
+    window.addEventListener('mousemove', (e) => {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.style.left = e.clientX + 'px';
+      sparkle.style.top = e.clientY + 'px';
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 800);
+    });
+
+    /* FIREWORKS ANIMATION */
+    const canvas = document.getElementById('fireworksCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function createParticle(x, y) {
+      const colors = ['#ffffff', '#ffb3c1', '#ff477e', '#ff758f', '#ffd700'];
+      for (let i = 0; i < 25; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 5 + 2;
+        particles.push({
+          x, y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          alpha: 1,
+          color: colors[Math.floor(Math.random() * colors.length)]
+        });
+      }
+    }
+
+    function animateFireworks() {
+      ctx.fillStyle = 'rgba(255, 10, 84, 0.2)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((p, index) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.alpha -= 0.015;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = Math.max(0, p.alpha);
+        ctx.fill();
+
+        if (p.alpha <= 0) particles.splice(index, 1);
+      });
+
+      requestAnimationFrame(animateFireworks);
+    }
+
+    function startFireworks() {
+      animateFireworks();
+      setInterval(() => {
+        createParticle(Math.random() * canvas.width, Math.random() * (canvas.height * 0.5));
+      }, 400);
+    }
+  </script>
+</body>
+</html>
